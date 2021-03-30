@@ -2,14 +2,14 @@ import React from 'react'
 
 import '../../App.css'
 import HomeSection from '../HomeSection'
-import SignupSection from '../SignupSection'
+import SignInSection from '../SignInSection'
 
-function Signup(){
+function SignIn(){
     return(
         <React.Fragment>
-            <SignupSection/>
+            <SignInSection/>
         </React.Fragment>
     )
 }
 
-export default Signup
+export default SignIn
