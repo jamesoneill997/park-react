@@ -30,7 +30,19 @@ export const Form =() => {
             
                 body: JSON.stringify(data)
             }).then(function(response){
-                return response.json();
+                switch (response.status){
+                    case 201:
+                        alert("Sign up successful!")
+                        return
+
+                    case 409:
+                        alert("User with that email address already exists")
+                        return
+
+                    default:
+                        alert("Unknown error, please contact support@parkai.com")
+                        return
+                }
             })
             
         }
@@ -41,30 +53,30 @@ export const Form =() => {
 
                 <div className="form-group">
                     <label>First name</label>
-                    <input type="text" className="form-control" placeholder="First name" ref={firstNameEl}/>
+                    <input type="text" className="form-control" placeholder="First name" ref={firstNameEl} required/>
                 </div>
 
                 <div className="form-group">
                     <label>Last name</label>
-                    <input type="text" className="form-control" placeholder="Last name" ref={surnameEl}/>
+                    <input type="text" className="form-control" placeholder="Last name" ref={surnameEl} required/>
                 </div>
 
                 <div className="form-group">
                     <label>Email address</label>
-                    <input type="email" className="form-control" placeholder="Enter email" ref={emailEl}/>
+                    <input type="email" className="form-control" placeholder="Enter email" ref={emailEl} required/>
                 </div>
 
                 <div className="form-group">
                     <label>Password</label>
-                    <input type="password" className="form-control" placeholder="Enter password" ref={passwordEl}/>
+                    <input type="password" className="form-control" placeholder="Enter password" ref={passwordEl} required/>
                 </div>
 
                 <div className="form-group">
                     <label>I am a...</label>
                     <select name="type" id="type" ref={typeEl}>
                         <option disabled selected value> -- select an option -- </option>
-                        <option value="admin">Car Owner</option>
-                        <option value="user">Carpark Owner</option>
+                        <option value="user">Car Owner</option>
+                        <option value="admin">Carpark Owner</option>
                     </select>
 
                 </div>
