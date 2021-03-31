@@ -14,11 +14,11 @@ export const Form =() => {
             e.preventDefault();
         
             const data = {
-            firstName: firstNameEl.current.value,
-            surname: surnameEl.current.value,
-            type: typeEl.current.value,
-            email: emailEl.current.value,
-            password: passwordEl.current.value
+                firstName: firstNameEl.current.value,
+                surname: surnameEl.current.value,
+                type: typeEl.current.value,
+                email: emailEl.current.value,
+                password: passwordEl.current.value
             }
             
             fetch('https://parkapiv0.herokuapp.com/users', {
