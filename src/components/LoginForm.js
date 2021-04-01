@@ -1,18 +1,28 @@
-import React from 'react'
+import React, { Component } from 'react'
 import './Form.css'
 
+class LoginForm extends React.Component{
+    constructor(props) {
+        super(props);
+        this.firstNameEl = React.createRef();
+        this.surnameEl = React.createRef();
+        this.emailEl = React.createRef();
+        this.passwordEl = React.createRef();
+        this.typeEl = React.createRef();
 
-export const LoginForm =() => {
+    }
 
-    const emailEl = React.useRef(null);
-    const passwordEl = React.useRef(null);
+    state = {
+        isLoading : false
+    }
 
-    const handleSubmit = e => {
+    handleSubmit = (e) => {
+        this.setState({isLoading:true})
         e.preventDefault();
     
         const data = {
-            email: emailEl.current.value,
-            password: passwordEl.current.value
+            email: this.emailEl.current.value,
+            password: this.passwordEl.current.value
         }
         
         fetch('https://parkapiv0.herokuapp.com/login', {
@@ -23,14 +33,16 @@ export const LoginForm =() => {
             },
         
             body: JSON.stringify(data)
-        }).then(function(response){
+        }).then((response)=>{
+            this.setState({isLoading: false})
+
             switch (response.status){
                 case 200:
-                    alert("Credentials are correct. Welcome back!")
+                    alert("Sign in successful!")
                     return
 
                 case 401:
-                    alert("Credentials incorrect.")
+                    alert("Invalid credentials")
                     return
 
                 default:
@@ -41,29 +53,42 @@ export const LoginForm =() => {
         
     }
 
-    return (
-        <form onSubmit={handleSubmit}>
-                <h3>Sign In</h3>
 
-                <div className="form-group">
-                    <label>Email address</label>
-                    <input type="email" className="form-control" placeholder="Enter email" ref={emailEl}/>
-                </div>
 
-                <div className="form-group">
-                    <label>Password</label>
-                    <input type="password" className="form-control" placeholder="Enter password" ref={passwordEl}/>
-                </div>
+    render(){
 
-            
-                <div className="button-container">
-                    <button type="submit" className="btn btn-primary btn-block">Sign In</button>
-                </div>
-            <div className="form-end">
-                <p className="forgot-password text-right">
-                    Don't have an Account? <a href="/signup">Sign up</a>
-                    </p>
-                </div>
-            </form>
-    )
+        const {isLoading} = this.state
+        return (
+            <form onSubmit={this.handleSubmit}>
+                    <h3>Sign In</h3>
+
+                    
+                    <div className="form-group">
+                        <label>Email address</label>
+                        <input type="email" className="form-control" placeholder="Enter email" ref={this.emailEl} required/>
+                    </div>
+
+                    <div className="form-group">
+                        <label>Password</label>
+                        <input type="password" className="form-control" placeholder="Enter password" ref={this.passwordEl} required/>
+                    </div>
+
+                   
+                    <div className="button-container">
+                        <button type="submit" className="btn btn-primary btn-block" disabled={isLoading}>
+                        {isLoading && <i className="fa fa-refresh fa-spin"></i>}
+                        Sign Up
+                        </button>
+                    </div>
+                <div className="form-end">
+                    <p className="forgot-password text-right">
+                        Don't have an account? <a href="/signup">Sign Up</a>
+                        </p>
+                    </div>
+                </form>
+        )}
+
 }
+
+
+export default LoginForm

@@ -1,6 +1,5 @@
 import React from 'react'
-import {Form} from './Form'
-import {Button} from './Button'
+import Form from './Form'
 import '../App.css'
 import './HomeSection.css'
 import './Form.css'
