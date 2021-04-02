@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import './Form.css'
+import cookies from "js-cookies";
+
 
 class LoginForm extends React.Component{
     
@@ -28,6 +30,7 @@ class LoginForm extends React.Component{
         
         fetch('https://parkapiv0.herokuapp.com/login', {
             method: 'POST',
+            credentials: 'include',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
@@ -39,7 +42,7 @@ class LoginForm extends React.Component{
 
             switch (response.status){
                 case 200:
-                    alert("Sign in successful!")
+                    alert(cookies.getItem("ParkAIToken"))
                     return
 
                 case 401:

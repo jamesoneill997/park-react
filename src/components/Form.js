@@ -30,6 +30,7 @@ class Form extends React.Component{
         
         fetch('https://parkapiv0.herokuapp.com/users', {
             method: 'POST',
+            credentials: 'include',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',

@@ -6,6 +6,7 @@ import './App.css'
 import Home from './components/pages/Home'
 import Signup from './components/pages/Signup'
 import SignIn from './components/pages/SignIn'
+import UserDashHome from './components/pages/UserDashHome'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
                 <Route path='/' exact component={Home}/>
                 <Route path='/signup' exact component={Signup}/>
                 <Route path='/signin' exact component={SignIn}/>
+                <Route path='/dashboard' exact component={UserDashHome}/>
 
             </Switch>
         </Router>
