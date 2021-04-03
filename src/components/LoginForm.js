@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './Form.css'
-import cookies from "js-cookies";
+import Cookies from 'js-cookie';
 
 
 class LoginForm extends React.Component{
@@ -21,14 +21,14 @@ class LoginForm extends React.Component{
 
     handleSubmit = (e) => {
         this.setState({isLoading:true})
-        e.preventDefault();
+        e.preventDefault()
     
         const data = {
             email: this.emailEl.current.value,
             password: this.passwordEl.current.value
         }
         
-        fetch('https://parkapiv0.herokuapp.com/login', {
+        fetch('http://localhost:8080/login', {
             method: 'POST',
             credentials: 'include',
             headers: {
@@ -42,7 +42,10 @@ class LoginForm extends React.Component{
 
             switch (response.status){
                 case 200:
-                    alert(cookies.getItem("ParkAIToken"))
+                    console.log(response.text().then(function(data){
+                        console.log(data)
+                        console.log(Cookies.get('ParkAIToken'))
+                    }))
                     return
 
                 case 401:
@@ -57,8 +60,6 @@ class LoginForm extends React.Component{
         
     }
 
-
-
     render(){
 
         const {isLoading} = this.state
@@ -66,7 +67,6 @@ class LoginForm extends React.Component{
             <form onSubmit={this.handleSubmit}>
                     <h3>Sign In</h3>
 
-                    
                     <div className="form-group">
                         <label>Email address</label>
                         <input type="email" className="form-control" placeholder="Enter email" ref={this.emailEl} required/>
