@@ -1,10 +1,13 @@
 import React from 'react'
 import './Form.css'
-import Cookies from 'js-cookie';
+import Cookies from 'js-cookie'
 import jwt from 'jwt-decode'
 
 
+
 class LoginForm extends React.Component{
+
+    
     
     constructor(props) {
         super(props);
@@ -29,7 +32,7 @@ class LoginForm extends React.Component{
             password: this.passwordEl.current.value
         }
         
-        fetch('https://parkapiv0.herokuapp.com/login', {
+        fetch('http://localhost:8080/login', {
             method: 'POST',
             credentials: 'include',
             headers: {
@@ -39,21 +42,20 @@ class LoginForm extends React.Component{
         
             body: JSON.stringify(data)
         }).then((response)=>{
+            
             this.setState({isLoading: false})
 
             switch (response.status){
                 case 200:
                     console.log(response.text().then(function(data){
-                        Cookies.set("ParkAIToken", data, {expires: 7, domain: 'https://parkai.herokuapp.com/signin', path:'/'})
+                        Cookies.set("ParkAIToken", data, {expires: 7, path:'/'})
                         console.log(jwt(Cookies.get('ParkAIToken')))
                     }))
 
-                    fetch('https://parkapiv0.herokuapp.com/users', {
+                    fetch('http://localhost:8080/users', {
                             method: 'GET',
                             credentials: 'include',
                             headers: {
-                                'Accept': 'application/json',
-                                'Content-Type': 'application/json',
                                 'Set-Cookie': 'ParkAIToken=' + Cookies.get('ParkAIToken')
                             }
                     }).then(function(data){
