@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 import './Form.css'
 import Cookies from 'js-cookie';
+import jwt from 'jwt-decode'
 
 
 class LoginForm extends React.Component{
@@ -44,8 +45,24 @@ class LoginForm extends React.Component{
                 case 200:
                     console.log(response.text().then(function(data){
                         console.log(data)
-                        console.log(Cookies.get('ParkAIToken'))
+                        console.log(jwt(Cookies.get('ParkAIToken')))
                     }))
+
+                    fetch('http://localhost:8080/users', {
+                            method: 'GET',
+                            credentials: 'include',
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json',
+                            }
+                    }).then(function(data){
+                        console.log(data.json().then(function(user){
+                            console.log(user)
+                        }))
+                    }).catch((error)=>{
+                        console.log(error)
+                    })
+                    
                     return
 
                 case 401:
@@ -56,6 +73,8 @@ class LoginForm extends React.Component{
                     alert("Unknown error, please contact support@parkai.com")
                     return
             }
+        }).catch((error)=>{
+            console.log(error)
         })
         
     }
