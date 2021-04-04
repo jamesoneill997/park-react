@@ -32,7 +32,7 @@ class LoginForm extends React.Component{
             password: this.passwordEl.current.value
         }
         
-        fetch('http://localhost:8080/login', {
+        fetch('https://parkapiv0.herokuapp.com/login', {
             method: 'POST',
             credentials: 'include',
             headers: {
@@ -52,7 +52,7 @@ class LoginForm extends React.Component{
                         console.log(jwt(Cookies.get('ParkAIToken')))
                     }))
 
-                    fetch('http://localhost:8080/users', {
+                    fetch('https://parkapiv0.herokuapp.com/users', {
                             method: 'GET',
                             credentials: 'include',
                             headers: {
