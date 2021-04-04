@@ -54,6 +54,7 @@ class LoginForm extends React.Component{
                             headers: {
                                 'Accept': 'application/json',
                                 'Content-Type': 'application/json',
+                                'Set-Cookie': 'ParkAIToken=' + Cookies.get('ParkAIToken')
                             }
                     }).then(function(data){
                         console.log(data.json().then(function(user){
