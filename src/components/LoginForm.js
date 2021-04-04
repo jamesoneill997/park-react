@@ -44,7 +44,7 @@ class LoginForm extends React.Component{
             switch (response.status){
                 case 200:
                     console.log(response.text().then(function(data){
-                        Cookies.set("ParkAIToken", data)
+                        Cookies.set("ParkAIToken", data, {expires: 7, domain: 'https://parkai.herokuapp.com/signin', path:'/'})
                         console.log(jwt(Cookies.get('ParkAIToken')))
                     }))
 
