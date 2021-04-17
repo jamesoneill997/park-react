@@ -3,12 +3,15 @@ import LoginForm from './LoginForm'
 import '../App.css'
 import './HomeSection.css'
 import './LoginForm.css'
-function SignInSection() {
+export default class SignInSection extends React.Component{
+    constructor(props){
+        super(props)
+    }
+    render(){
     return (
         <div className='home-container'>
-            <LoginForm></LoginForm>
+            <LoginForm handleLogin = {this.handleLogin}></LoginForm>
         </div>
-    )
+    )}
 }
 
-export default SignInSection

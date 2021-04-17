@@ -3,12 +3,15 @@ import React from 'react'
 import '../../App.css'
 import SignupSection from '../SignupSection'
 
-function Signup(){
+export default class Signup extends React.Component{
+    constructor(props){
+        super(props)
+    }
+    render(){
     return(
         <React.Fragment>
             <SignupSection/>
         </React.Fragment>
     )
+    }
 }
-
-export default Signup

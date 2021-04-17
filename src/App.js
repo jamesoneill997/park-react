@@ -9,22 +9,46 @@ import SignIn from './components/pages/SignIn'
 import UserDashHome from './components/pages/UserDashHome'
 
 
-function App() {
+export default class App extends React.Component {
+    constructor(){
+        super()
+        this.state = {
+            loggedIn:false,
+            user: {}
+        }
+    }
 
+    render(){
   return (
       <React.Fragment>
         <Router>
             <Navbar/>
             <Switch>
-                <Route path='/' exact component={Home}/>
-                <Route path='/signup' exact component={Signup}/>
-                <Route path='/signin' exact component={SignIn}/>
-                <Route path='/dashboard' exact component={UserDashHome}/>
+                <Route 
+                path='/' 
+                exact 
+                render={props=>(
+                    <Home {... props} loggedIn = {this.state.loggedIn} />
+                )}
+                />
+                <Route path='/signup'             
+                exact 
+                render={props=>(
+                    <Signup {... props} loggedIn = {this.state.loggedIn} />
+                )}/>
+                <Route path='/signin' 
+                exact 
+                render={props=>(
+                    <SignIn {... props} loggedIn = {this.state.loggedIn} />
+                )}/>
+                <Route path='/dashboard' exact 
+                render={props=>(
+                    <UserDashHome {... props} loggedIn = {this.state.loggedIn} />
+                )}/>
 
             </Switch>
         </Router>
       </React.Fragment>
-  )
+  )}
 }
 
-export default App;

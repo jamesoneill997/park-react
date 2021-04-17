@@ -3,12 +3,20 @@ import React from 'react'
 import '../../App.css'
 import SignInSection from '../SignInSection'
 
-function SignIn(){
+export default class SignIn extends React.Component{
+    constructor(props){
+        super(props)
+        this.handleLogin = this.handleLogin.bind(this)
+    }
+
+    handleLogin(data){
+        this.props.history.push("/dashboard")
+    }
+
+    render(){
     return(
         <React.Fragment>
-            <SignInSection/>
+            <SignInSection handleLogin = {this.handleLogin}/>
         </React.Fragment>
-    )
+    )}
 }
-
-export default SignIn

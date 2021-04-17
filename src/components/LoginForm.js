@@ -7,8 +7,6 @@ import jwt from 'jwt-decode'
 
 class LoginForm extends React.Component{
 
-    
-    
     constructor(props) {
         super(props);
         this.firstNameEl = React.createRef();
@@ -18,6 +16,8 @@ class LoginForm extends React.Component{
         this.typeEl = React.createRef();
 
     }
+
+    
 
     state = {
         isLoading : false
@@ -52,19 +52,7 @@ class LoginForm extends React.Component{
                         console.log(jwt(Cookies.get('ParkAIToken')))
                     }))
 
-                    fetch('https://parkapiv0.herokuapp.com/users', {
-                            method: 'GET',
-                            credentials: 'include',
-                            headers: {
-                                'Set-Cookie': 'ParkAIToken=' + Cookies.get('ParkAIToken')
-                            }
-                    }).then(function(data){
-                        console.log(data.json().then(function(user){
-                            console.log(user)
-                        }))
-                    }).catch((error)=>{
-                        console.log(error)
-                    })
+                    this.props.history.push("/dashboard")
                     
                     return
 
