@@ -1,4 +1,6 @@
 import React from 'react'
+import DashBar from '../DashBar'
+import DashBody from '../DashBody'
 
 
 export default class UserDashHome extends React.Component{
@@ -9,7 +11,8 @@ export default class UserDashHome extends React.Component{
     render(){
     return(
         <React.Fragment>
-        {this.props.loggedIn ? "You are logged in": "You are not logged in"}
+        <DashBar></DashBar>
+        <DashBody title={"Welcome to Park.ai"} name={"Paul"}></DashBody>
         </React.Fragment>
     )}
 }

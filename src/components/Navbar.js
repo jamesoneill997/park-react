@@ -26,10 +26,10 @@ function Navbar() {
 
     return (
         <React.Fragment>
-            <nav className="navbar">
+            <nav className="nbar">
                 
-                <div className="navbar-container">
-                    <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
+                <div className="nbar-container">
+                    <Link to="/" className="nbar-logo" onClick={closeMobileMenu}>
                     <img src={require("../assets/images/logo.png").default} alt='parkai-logo' />
                     </Link>
                     <div className="menu-icon" onClick={handleClick}>

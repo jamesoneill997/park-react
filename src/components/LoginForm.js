@@ -2,7 +2,7 @@ import React from 'react'
 import './Form.css'
 import Cookies from 'js-cookie'
 import jwt from 'jwt-decode'
-
+import {useHistory} from"react-router-dom"
 
 
 class LoginForm extends React.Component{
@@ -14,16 +14,14 @@ class LoginForm extends React.Component{
         this.emailEl = React.createRef();
         this.passwordEl = React.createRef();
         this.typeEl = React.createRef();
-
     }
-
-    
 
     state = {
         isLoading : false
     }
 
     handleSubmit = (e) => {
+
         this.setState({isLoading:true})
         e.preventDefault()
     
@@ -52,7 +50,7 @@ class LoginForm extends React.Component{
                         console.log(jwt(Cookies.get('ParkAIToken')))
                     }))
 
-                    this.props.history.push("/dashboard")
+                    this.props.history.push("/dashboard/home")
                     
                     return
 

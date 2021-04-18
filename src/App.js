@@ -7,6 +7,10 @@ import Home from './components/pages/Home'
 import Signup from './components/pages/Signup'
 import SignIn from './components/pages/SignIn'
 import UserDashHome from './components/pages/UserDashHome'
+import UserDashParking from './components/pages/UserDashParking'
+import UserDashGarage from './components/pages/UserDashGarage'
+import UserDashAccount from './components/pages/UserDashAccount'
+import UserDashTopup from './components/pages/UserDashTopup'
 
 
 export default class App extends React.Component {
@@ -23,10 +27,32 @@ export default class App extends React.Component {
       <React.Fragment>
         <Router>
             <Switch>
-            <Route path='/dashboard' exact 
+            <Route path='/dashboard/home' 
+            exact 
             render={props=>(
                 <UserDashHome {... props} loggedIn = {this.state.loggedIn} />
             )}/>
+            <Route path='/dashboard/parking' 
+            exact 
+            render={props=>(
+                <UserDashParking {... props} loggedIn = {this.state.loggedIn} />
+            )}/>
+            <Route path='/dashboard/garage' 
+            exact 
+            render={props=>(
+                <UserDashGarage {... props} loggedIn = {this.state.loggedIn} />
+            )}/>
+            <Route path='/dashboard/topup' 
+            exact 
+            render={props=>(
+                <UserDashTopup {... props} loggedIn = {this.state.loggedIn} />
+            )}/>
+            <Route path='/dashboard/account' 
+            exact 
+            render={props=>(
+                <UserDashAccount {... props} loggedIn = {this.state.loggedIn} />
+            )}/>
+
             <div>
             <Navbar/>
 

@@ -1,4 +1,4 @@
-.navbar {
+.dashbar {
     background-color: #060b26;
     height: 80px;
     display: flex;
@@ -12,9 +12,9 @@
     background: none;
   }
   
-  .nav-menu {
+  .dash-menu {
     background-color: #060b26;
-    width: 250px;
+    width: 200px;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -24,9 +24,10 @@
     transition: 850ms;
   }
   
-  .nav-menu.active {
+  .dash-menu.active {
     left: 0;
     transition: 350ms;
+    
   }
   
   .nav-text {
@@ -35,7 +36,7 @@
     align-items: center;
     padding: 8px 0px 8px 16px;
     list-style: none;
-    height: 60px;
+    height: 100px;
   }
   
   .nav-text a {
@@ -51,22 +52,28 @@
   }
   
   .nav-text a:hover {
-    background-color: #1a83ff;
+    background-color: #00ffee;
   }
   
   .nav-menu-items {
     width: 100%;
   }
   
-  .navbar-toggle {
+  .dashbar-toggle {
     background-color: #060b26;
     width: 100%;
-    height: 80px;
+    height: 100px;
     display: flex;
     justify-content: start;
     align-items: center;
+    margin-bottom:20px;
   }
   
   span {
     margin-left: 16px;
+  }
+
+  .dash-logo{
+      height: 100px;
+      margin-top:20px;
   }

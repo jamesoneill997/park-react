@@ -3,15 +3,15 @@ import LoginForm from './LoginForm'
 import '../App.css'
 import './HomeSection.css'
 import './LoginForm.css'
-export default class SignInSection extends React.Component{
-    constructor(props){
-        super(props)
-    }
-    render(){
+import {useHistory} from "react-router-dom";
+
+function SignInSection(){
+
     return (
         <div className='home-container'>
-            <LoginForm handleLogin = {this.handleLogin}></LoginForm>
+            <LoginForm history={useHistory()}></LoginForm>
         </div>
-    )}
+    )
 }
 
+export default SignInSection
