@@ -22,8 +22,14 @@ export default class App extends React.Component {
   return (
       <React.Fragment>
         <Router>
-            <Navbar/>
             <Switch>
+            <Route path='/dashboard' exact 
+            render={props=>(
+                <UserDashHome {... props} loggedIn = {this.state.loggedIn} />
+            )}/>
+            <div>
+            <Navbar/>
+
                 <Route 
                 path='/' 
                 exact 
@@ -41,11 +47,7 @@ export default class App extends React.Component {
                 render={props=>(
                     <SignIn {... props} loggedIn = {this.state.loggedIn} />
                 )}/>
-                <Route path='/dashboard' exact 
-                render={props=>(
-                    <UserDashHome {... props} loggedIn = {this.state.loggedIn} />
-                )}/>
-
+                </div>
             </Switch>
         </Router>
       </React.Fragment>

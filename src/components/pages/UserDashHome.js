@@ -1,6 +1,5 @@
 import React from 'react'
 
-import '../../App.css'
 
 export default class UserDashHome extends React.Component{
     constructor(props){
