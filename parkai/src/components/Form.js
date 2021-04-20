@@ -1,5 +1,6 @@
 import React from 'react'
 import './Form.css'
+import Cookies from 'js-cookie'
 
 class Form extends React.Component{
     constructor(props) {
@@ -43,6 +44,42 @@ class Form extends React.Component{
             switch (response.status){
                 case 201:
                     alert("Sign up successful!")
+                    fetch('http://localhost:8080/login', {
+            method: 'POST',
+            credentials: 'include',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+        
+            body: JSON.stringify(data)
+        }).then((response)=>{
+            
+            this.setState({isLoading: false})
+
+            switch (response.status){
+                case 200:
+                    console.log(response.text().then(function(data){
+                        Cookies.set("ParkAIToken", data, {expires: 7, path:'/'})
+                    }))
+
+                    this.props.history.push("/dashboard/home")
+
+                    
+                    return
+
+                case 401:
+                    alert("Invalid credentials")
+                    return
+
+                default:
+                    alert("Unknown error, please contact support@parkai.com")
+                    return
+            }
+        })
+
+                    this.props.history.push("/dashboard/home")
+
                     return
 
                 case 409:
