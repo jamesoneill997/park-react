@@ -14,11 +14,12 @@ class LoginForm extends React.Component{
         this.emailEl = React.createRef();
         this.passwordEl = React.createRef();
         this.typeEl = React.createRef();
+        this.state = {
+            isLoading : false
+        }
     }
 
-    state = {
-        isLoading : false
-    }
+
 
     handleSubmit = (e) => {
 
@@ -47,19 +48,7 @@ class LoginForm extends React.Component{
                 case 200:
                     console.log(response.text().then(function(data){
                         Cookies.set("ParkAIToken", data, {expires: 7, path:'/'})
-                        console.log(jwt(Cookies.get('ParkAIToken')))
                     }))
-
-
-                    fetch('http://localhost:8080/users', {
-                        method: 'GET',
-                        credentials: 'include',
-                        headers: {
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/json',
-                            'Set-Cookie': "ParkAIToken=" + Cookies.get('ParkAIToken')
-                        },
-                    })
 
                     this.props.history.push("/dashboard/home")
 

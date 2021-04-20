@@ -18,7 +18,6 @@ export default class App extends React.Component {
         super()
         this.state = {
             loggedIn:false,
-            user: {}
         }
     }
 
