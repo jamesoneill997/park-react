@@ -15,7 +15,8 @@ class LoginForm extends React.Component{
         this.passwordEl = React.createRef();
         this.typeEl = React.createRef();
         this.state = {
-            isLoading : false
+            isLoading : false,
+            user: null
         }
     }
 
@@ -49,10 +50,30 @@ class LoginForm extends React.Component{
                     console.log(response.text().then(function(data){
                         Cookies.set("ParkAIToken", data, {expires: 7, path:'/'})
                     }))
-                    
-                    this.props.history.push("/dashboard/home")
+                
+                        fetch('http://localhost:8080/users', {
+                            method: 'GET',
+                            credentials: 'include',
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json',
+                            }
+                            }).then(response=>{
+                                response.json().then((data)=>{
+                                    this.setState({user:data})
 
-                    
+                                                    
+                                    if(data.type == "user"){
+                                        this.props.history.push("/user/dashboard/home")
+                                    }else{
+                                        this.props.history.push("/admin/dashboard/home")
+                                    }
+                                })
+
+                            })
+                
+                
+                
                     return
 
                 case 401:
