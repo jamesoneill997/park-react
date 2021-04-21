@@ -12,6 +12,12 @@ import UserDashGarage from './components/pages/UserDashGarage'
 import UserDashAccount from './components/pages/UserDashAccount'
 import UserDashTopup from './components/pages/UserDashTopup'
 
+import AdminDashHome from './components/pages/AdminDashHome'
+import AdminDashReports from './components/pages/AdminDashReports'
+import AdminDashCarParks from './components/pages/AdminDashCarParks'
+import AdminDashAccount from './components/pages/AdminDashAccount'
+import AdminDashWithdraw from './components/pages/AdminDashWithdraw'
+
 
 export default class App extends React.Component {
     constructor(){
@@ -26,30 +32,57 @@ export default class App extends React.Component {
       <React.Fragment>
         <Router>
             <Switch>
-            <Route path='/dashboard/home' 
+            <Route path='/user/dashboard/home' 
             exact 
             render={props=>(
                 <UserDashHome {... props} loggedIn = {this.state.loggedIn} />
             )}/>
-            <Route path='/dashboard/parking' 
+            <Route path='/user/dashboard/parking' 
             exact 
             render={props=>(
                 <UserDashParking {... props} loggedIn = {this.state.loggedIn} />
             )}/>
-            <Route path='/dashboard/garage' 
+            <Route path='/user/dashboard/garage' 
             exact 
             render={props=>(
                 <UserDashGarage {... props} loggedIn = {this.state.loggedIn} />
             )}/>
-            <Route path='/dashboard/topup' 
+            <Route path='/user/dashboard/topup' 
             exact 
             render={props=>(
                 <UserDashTopup {... props} loggedIn = {this.state.loggedIn} />
             )}/>
-            <Route path='/dashboard/account' 
+            <Route path='/user/dashboard/account' 
             exact 
             render={props=>(
                 <UserDashAccount {... props} loggedIn = {this.state.loggedIn} />
+            )}/>
+
+
+            <Route path='/admin/dashboard/home' 
+            exact 
+            render={props=>(
+                <AdminDashHome {... props} loggedIn = {this.state.loggedIn} />
+            )}/>
+            <Route path='/admin/dashboard/reports' 
+            exact 
+            render={props=>(
+                <AdminDashReports {... props} loggedIn = {this.state.loggedIn} />
+            )}/>
+            <Route path='/admin/dashboard/carparks' 
+            exact 
+            render={props=>(
+                <AdminDashCarParks {... props} loggedIn = {this.state.loggedIn} />
+            )}/>
+            <Route path='/admin/dashboard/withdraw' 
+            exact 
+            render={props=>(
+                <AdminDashWithdraw {... props} loggedIn = {this.state.loggedIn} />
+            )}/>
+            <Route path='/admin/dashboard/account' 
+            exact 
+            render={props=>(
+                <AdminDashAccount {... props} loggedIn = {this.state.loggedIn} />
             )}/>
 
             <div>

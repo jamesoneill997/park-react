@@ -62,9 +62,11 @@ class Form extends React.Component{
                     console.log(response.text().then(function(data){
                         Cookies.set("ParkAIToken", data, {expires: 7, path:'/'})
                     }))
-
-                    this.props.history.push("/dashboard/home")
-
+                    if(this.typeEl.current.value == "user"){
+                        this.props.history.push("/user/dashboard/home")
+                    }else{
+                        this.props.history.push("/adimin/dashboard/home")
+                    }
                     
                     return
 

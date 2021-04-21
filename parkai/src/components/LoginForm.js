@@ -49,7 +49,7 @@ class LoginForm extends React.Component{
                     console.log(response.text().then(function(data){
                         Cookies.set("ParkAIToken", data, {expires: 7, path:'/'})
                     }))
-
+                    
                     this.props.history.push("/dashboard/home")
 
                     
