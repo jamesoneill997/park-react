@@ -12,19 +12,19 @@ export const AdminSidebarData = [
   },
   {
     title: 'Reports',
-    path: 'admin/dashboard/reports',
+    path: '/admin/dashboard/reports',
     icon: <IoIcons.IoIosPaper />,
     cName: 'nav-text'
   },
   {
     title: 'Carparks',
-    path: 'admin/dashboard/carparks',
+    path: '/admin/dashboard/carparks',
     icon: <FaIcons.FaCartPlus />,
     cName: 'nav-text'
   },
   {
     title: 'Withdraw Funds',
-    path: 'admin/dashboard/withdraw',
+    path: '/admin/dashboard/withdraw',
     icon: <IoIcons.IoMdPeople />,
     cName: 'nav-text'
   },
