@@ -1,15 +1,22 @@
-import React from 'react'
-import AdminDashBar from '../AdminDashBar'
-import DashBody from '../DashBody'
-import Withdraw from '../Withdraw'
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
+import {CardElement} from '@stripe/react-stripe-js';
+import StripeCheckout from 'react-stripe-checkout';
 
-export default class AdminDashWithdraw extends React.Component{
+import React from 'react'
+import './Topup.css'
+
+
+// Make sure to call `loadStripe` outside of a component’s render to avoid
+// recreating the `Stripe` object on every render.
+const stripePromise = loadStripe("pk_test_51IHWOCFqx8UNc5STi3l8hCbxfdcQfrlqv9BlVrCbLH4kyauI3ANffkUZEPMl1uSO8u472WtNzDjj1bOCtPny0u8C00X08BYoR9");
+
+export default class Topup extends React.Component {
     constructor(props){
         super(props)
     }
 
     state = {
-        amount: 0,
         user:{}
     }
 
@@ -42,7 +49,7 @@ export default class AdminDashWithdraw extends React.Component{
 
             switch (response.status){
                 case 409:
-                    alert("Withdrawal not successful")
+                    alert("Top up not successful")
                     return
             }
 
@@ -52,7 +59,7 @@ export default class AdminDashWithdraw extends React.Component{
     }
 
     async handleSubmit() {
-        this.state.user.accountBalance -= (this.props.amount/100)
+        this.state.user.accountBalance += (this.props.amount/100)
         this.setState({user:this.state.user})
         console.log(this.state.user)
         await this.updateUser()
@@ -61,13 +68,23 @@ export default class AdminDashWithdraw extends React.Component{
 
   };
 
-    render(){
-    return(
-        <React.Fragment>
-        <AdminDashBar></AdminDashBar>
-        <DashBody title={"Withdraw funds"} >
-        <Withdraw user={this.state.user==undefined?{}:this.state.user}></Withdraw>
-        </DashBody>
-        </React.Fragment>
-    )}
+  render() {
+    const {stripe} = this.props;
+    
+    return (    
+        <div>
+      <StripeCheckout
+        amount= {this.props.amount}
+        email={this.props.user.email}
+        name='Top up your account!'
+        stripeKey = "pk_test_51IHWOCFqx8UNc5STi3l8hCbxfdcQfrlqv9BlVrCbLH4kyauI3ANffkUZEPMl1uSO8u472WtNzDjj1bOCtPny0u8C00X08BYoR9"
+        currency="EUR"
+      />
+      <br/>
+      <br/>
+      <button onClick={async()=>{await this.handleSubmit()}}>Add to Park.AI balance</button>
+      </div>
+
+    );
+  }
 }

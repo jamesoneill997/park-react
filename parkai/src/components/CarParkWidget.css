@@ -1,0 +1,86 @@
+#carpark-area{
+    width:30%;
+    float:left;
+}
+.carpark-container{
+    color:#0fe;
+    list-style: none;
+    float:left;
+    background-color: rgba(0,0,0,0.7);
+    padding:20px;
+    border-radius: 20px;
+    border-style: solid;
+    width: 100%;
+}
+
+.add-button, .removal-button, .edit-button{
+    padding:4px;
+    float:right;
+    border-radius: 8px;
+}
+
+.add-button{
+    background-color: #0fe;
+    margin-top:20px;
+}
+
+.removal-button{
+    background-color: rgb(158, 0, 0);
+    color:white;
+    font-weight: bolder;
+}
+
+.edit-button{
+    background-color: orange;
+}
+
+#empty{
+    color: #0fe;
+    background-color: black;
+    text-align: center;
+    height:120%;
+    padding:10px;
+    border-style:solid;
+    border-radius: 20px;
+}
+
+.add-button :hover{
+    background-color: black;
+    color:#0fe;
+    transition: 1000ms;
+}
+
+#carpark-add{
+    background-color: transparent;
+    border:none;
+    float:left;
+    width:80%;
+}
+
+.aform-group{
+    float:left;
+}
+
+.aform-group label{
+    width:40%;
+    margin-right:50%;
+    text-align: left;
+
+}
+
+.aadd-button{
+    padding:4px;
+    float:right;
+    border-radius: 8px;
+    background-color: #0fe;
+    margin-top:10px;
+
+}
+
+#removal-form{
+    background-color: transparent;
+    border:none;
+    height: 10px;
+    width: 450px;
+    padding-bottom:20px;
+}

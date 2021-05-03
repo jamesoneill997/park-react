@@ -1,0 +1,16 @@
+p{
+    color:#0fe;
+}
+
+#withdraw{
+    padding:4px;
+    border-radius: 8px;
+    background-color:#0fe;
+    color:black;
+    font-weight: bolder;
+}
+
+#withdraw-body{
+    text-align: center;
+    margin-top: 40px;
+}

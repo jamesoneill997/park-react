@@ -1,0 +1,26 @@
+.garage-body{
+    height: 450px;
+    width:800px;
+    background-color: black;
+    border-radius: 30px;
+    text-align: center;
+    margin-top:20px;
+    border-color: #00ffee;
+    border-style: solid;
+    padding:10px;
+}
+
+h2{
+    color: #00ffee;
+}
+
+.veh-text{
+    color:#00ffee;
+}
+
+#veh-form, #veh-rem-form{
+    background-color:transparent!important;
+    border: none;
+    margin:0;
+    height:50px;
+}

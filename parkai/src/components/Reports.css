@@ -1,0 +1,10 @@
+#report-body{
+    background-color: rgba(0,0,0,0.7);
+    width:400px;
+    height:200px;
+    border-radius: 10px;
+    border-color: #0fe;
+    border-style: solid;
+    color:#0fe;
+    text-align:center;
+}

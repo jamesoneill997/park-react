@@ -1,0 +1,33 @@
+.search-bar{
+    margin-bottom:50px;
+}
+
+.search-bar > input{
+    width: 80%;
+    border-radius: 20px;
+    height:30px
+} 
+
+.search-title{
+    margin-top:-50px;
+    color:#00ffee;
+    text-align: center;
+    margin-bottom:5px;
+}
+
+#search-button{
+    width:15%;
+    height:30px;
+    background-color: #00ffee;
+    color:black;
+    font-family: 'PT Sans'm sans-serif;
+    font-weight: bold;
+    border-radius:10px;
+}
+
+#search-button:hover{
+    color: #00ffee;
+    background-color: black;
+    transition-duration: 800ms;
+    cursor:pointer;
+}

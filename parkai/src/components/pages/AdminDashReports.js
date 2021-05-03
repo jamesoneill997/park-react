@@ -1,6 +1,7 @@
 import React from 'react'
 import AdminDashBar from '../AdminDashBar'
 import DashBody from '../DashBody'
+import Reports from '../Reports'
 
 
 export default class AdminDashReports extends React.Component{
@@ -12,7 +13,9 @@ export default class AdminDashReports extends React.Component{
     return(
         <React.Fragment>
         <AdminDashBar></AdminDashBar>
-        <DashBody title={"Reports"} ></DashBody>
+            <DashBody title={"Reports"} >
+                <Reports></Reports>
+            </DashBody>
         </React.Fragment>
     )}
 }

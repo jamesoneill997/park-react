@@ -1,8 +1,6 @@
 import React from 'react'
 import './Form.css'
 import Cookies from 'js-cookie'
-import jwt from 'jwt-decode'
-import {useHistory} from"react-router-dom"
 
 
 class LoginForm extends React.Component{
@@ -99,17 +97,17 @@ class LoginForm extends React.Component{
 
                     <div className="form-group">
                         <label>Email address</label>
-                        <input type="email" className="form-control" placeholder="Enter email" ref={this.emailEl} required/>
+                        <input id="email" type="email" className="form-control" placeholder="Enter email" ref={this.emailEl} required/>
                     </div>
 
                     <div className="form-group">
                         <label>Password</label>
-                        <input type="password" className="form-control" placeholder="Enter password" ref={this.passwordEl} required/>
+                        <input id="password" type="password" className="form-control" placeholder="Enter password" ref={this.passwordEl} required/>
                     </div>
 
                    
                     <div className="button-container">
-                        <button type="submit" className="btn btn-primary btn-block" disabled={isLoading}>
+                        <button id="subbutton" type="submit" className="btn btn-primary btn-block" disabled={isLoading}>
                         {isLoading && <i className="fa fa-refresh fa-spin"></i>}
                         Sign Up
                         </button>

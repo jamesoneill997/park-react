@@ -1,6 +1,7 @@
 import React from 'react'
 import DashBar from '../DashBar'
 import DashBody from '../DashBody'
+import GarageWidget from '../GarageWidget'
 
 
 export default class UserDashGarage extends React.Component{
@@ -12,7 +13,9 @@ export default class UserDashGarage extends React.Component{
     return(
         <React.Fragment>
         <DashBar></DashBar>
-        <DashBody title={"Garage"} ></DashBody>
+        <DashBody title={"Garage"} >
+        <GarageWidget></GarageWidget>
+        </DashBody>
         </React.Fragment>
     )}
 }

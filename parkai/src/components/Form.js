@@ -26,7 +26,9 @@ class Form extends React.Component{
             surname: this.surnameEl.current.value,
             type: this.typeEl.current.value,
             email: this.emailEl.current.value,
-            password: this.passwordEl.current.value
+            password: this.passwordEl.current.value,
+            vehicles: [],
+            carparks: []
         }
         
         fetch('https://parkapiv0.herokuapp.com/users', {
@@ -106,22 +108,22 @@ class Form extends React.Component{
 
                     <div className="form-group">
                         <label>First name</label>
-                        <input type="text" className="form-control" placeholder="First name" ref={this.firstNameEl} required/>
+                        <input id="name" type="text" className="form-control" placeholder="First name" ref={this.firstNameEl} required/>
                     </div>
 
                     <div className="form-group">
                         <label>Last name</label>
-                        <input type="text" className="form-control" placeholder="Last name" ref={this.surnameEl} required/>
+                        <input id="surname" type="text" className="form-control" placeholder="Last name" ref={this.surnameEl} required/>
                     </div>
 
                     <div className="form-group">
                         <label>Email address</label>
-                        <input type="email" className="form-control" placeholder="Enter email" ref={this.emailEl} required/>
+                        <input id="email" type="email" className="form-control" placeholder="Enter email" ref={this.emailEl} required/>
                     </div>
 
                     <div className="form-group">
                         <label>Password</label>
-                        <input type="password" className="form-control" placeholder="Enter password" ref={this.passwordEl} required/>
+                        <input id="password" type="password" className="form-control" placeholder="Enter password" ref={this.passwordEl} required/>
                     </div>
 
                     <div className="form-group">

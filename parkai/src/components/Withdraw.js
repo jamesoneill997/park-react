@@ -1,18 +1,18 @@
-import React from 'react'
-import AdminDashBar from '../AdminDashBar'
-import DashBody from '../DashBody'
-import Withdraw from '../Withdraw'
+import React, { Component } from 'react';
+import './UserMap.css'
+import './Withdraw.css'
+ 
 
-export default class AdminDashWithdraw extends React.Component{
+export default class Withdraw extends Component {
     constructor(props){
         super(props)
     }
 
     state = {
         amount: 0,
-        user:{}
+        user: {}
     }
-
+    
     async componentDidMount(){
         const response = await fetch('http://localhost:8080/users', {
             method: 'GET',
@@ -52,22 +52,28 @@ export default class AdminDashWithdraw extends React.Component{
     }
 
     async handleSubmit() {
-        this.state.user.accountBalance -= (this.props.amount/100)
-        this.setState({user:this.state.user})
-        console.log(this.state.user)
+        if (this.state.user.accountBalance == null){
+            this.state.user.accountBalance = 0
+            this.setState({user: this.state.user})
+        }
+        
+        this.state.user.accountBalance += (this.props.amount/100)
+        console.log(this.state.user.accountBalance)
+        this.setState({user: this.state.user})
         await this.updateUser()
-        alert("Top up successful!")
+        alert("Withdrawal successful!")
         return
 
   };
+    
+    render() {
+        return (
+        <div id="withdraw-body" style={{ height: '500px', width: '900px' }}>
+            <h2>Your Account Balance is: {this.props.user.accountBalance}</h2>
+            <p className="form-label">Withdraw</p><input id="amount-input" onChange={(e)=>{this.setState({amount:e.target.value * -1})}}/>
+            <button id="withdraw" onClick={async()=>{await this.handleSubmit()}}>Withdraw Funds</button>
 
-    render(){
-    return(
-        <React.Fragment>
-        <AdminDashBar></AdminDashBar>
-        <DashBody title={"Withdraw funds"} >
-        <Withdraw user={this.state.user==undefined?{}:this.state.user}></Withdraw>
-        </DashBody>
-        </React.Fragment>
-    )}
+        </div>
+        );
+    }
 }

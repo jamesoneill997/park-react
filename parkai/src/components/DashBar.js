@@ -1,9 +1,6 @@
-import React, {useState, useEffect} from 'react'
-import {Button} from './Button.js'
+import React from 'react'
 import {Link} from 'react-router-dom'
 import '../../node_modules/font-awesome/css/font-awesome.min.css'; 
-import * as FaIcons from 'react-icons/fa';
-import * as AiIcons from 'react-icons/ai';
 import { SidebarData } from './SidebarData';
 import './DashBar.css';
 import { IconContext } from 'react-icons';
